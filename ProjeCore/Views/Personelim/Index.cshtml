@@ -1,0 +1,39 @@
+﻿
+@model IEnumerable<ProjeCore.Models.Personel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+}
+<br />
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">City</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personel in Model)
+        {
+        <tr>
+            <th scope="row">@personel.PersonelID</th>
+            <td>@personel.Ad</td>
+            <td>@personel.Soyad</td>
+            <td>@personel.Sehir</td>
+            <td>@personel.Birim.BirimAd</td>
+            <td><a href="/Personelim/UpdatePersonnel/@personel.PersonelID" class="btn btn-success">Update</a></td>
+            <td><a href="/Personelim/DeletePersonnel/@personel.PersonelID" class="btn btn-danger">Delete</a></td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+<a href="/Personelim/AddPersonnel" class="btn btn-primary">New Personnel</a>
+
+
+

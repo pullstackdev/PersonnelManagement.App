@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ProjeCore.Models.Birim>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+}
+<br />
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var birim in Model)
+        {
+            <tr>
+                <th scope="row">@birim.BirimID</th>
+                <td>@birim.BirimAd</td>
+                <td><a href="#" class="btn btn-outline-secondary">Detail</a></td>
+                <td><a href="/Default/UpdateUnit/@birim.BirimID" class="btn btn-success">Update</a></td>
+                <td><a href="/Default/DeleteUnit/@birim.BirimID" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<a href="/Default/AddUnit" class="btn btn-primary">New Unit</a>
+

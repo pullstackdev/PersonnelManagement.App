@@ -1,0 +1,23 @@
+﻿@model ProjeCore.Models.Personel
+@{
+    ViewData["Title"] = "AddPersonnel";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+}
+<br />
+<h3>Add New Personnel</h3>
+
+<form class="form-group" method="post">
+    <b>Personnel Name</b>
+    @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" }) @*x.Ad->name gibi çalışır*@
+    <br />
+    <b>Personnel Surname</b>
+    @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control" }) @*x.Soyad->name gibi çalışır*@
+    <br />
+    <b>Personnel City</b>
+    @Html.TextBoxFor(x => x.Sehir, new { @class = "form-control" }) @*x.Sehir->name gibi çalışır*@
+    <br />
+    <b>Personnel Unit</b>
+    @Html.DropDownListFor(x => x.Birim.BirimID, (List<SelectListItem>)ViewBag.unitList, new { @class = "form-control" }) @*x.Birim->name gibi çalışır*@
+    <br />
+    <button class="btn btn-info">Add Personnel</button>
+</form>

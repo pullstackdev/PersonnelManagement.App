@@ -1,0 +1,23 @@
+﻿@model ProjeCore.Models.Birim
+@{
+    ViewData["Title"] = "UpdateUnit";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+}
+<br />
+@*<form class="form-group" method="post">
+        <div class="form-group">
+            <b>Department Name</b>
+            @Html.TextBoxFor(x => x.DeparmentName, new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>*@
+@using (Html.BeginForm("UpdateUnit", "Default", FormMethod.Post))
+{
+    <b>Unit ID</b>
+    @Html.TextBoxFor(x => x.BirimID, new { @class = "form-control", @readonly="@readonly" } )
+    <br />
+    <b>Unit Name</b>
+    @Html.TextBoxFor(x => x.BirimAd, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Update</button>
+}
