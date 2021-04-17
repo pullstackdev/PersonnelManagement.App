@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace ProjeCore.Controllers
     public class PersonelimController : Controller
     {
         Context context = new Context();
+        [Authorize]//yetkisi olan girebilir, olmayanı startupdaki AddAuthentication ayarı ile login/index'e yönlendirir
         public IActionResult Index()
         {
             var personeller = context.Personels.Include(x=>x.Birim).ToList(); //personel tablosuna birim tablosunu eklemek için include kullandık
@@ -78,6 +80,12 @@ namespace ProjeCore.Controllers
             context.Personels.Remove(personnel);
             context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Detail(int id)//id çünkü startupda aynı isimde bu optional değer
+        {
+            var personnels = context.Personels.Include(x=>x.Birim).Where(x => x.Birim.BirimID == id).ToList(); //birim tablosuda eklenmeli çünkü sayfada listeleniyor
+            return View("Index", personnels);
         }
     }
 }

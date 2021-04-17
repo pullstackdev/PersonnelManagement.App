@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjeCore.Models
 {
-    public class Context: DbContext //Microsoft.EntityFrameworkCore; gerekiyor nugetten indirdik-buradan inherit edilmeli
+    public class Context : DbContext //Microsoft.EntityFrameworkCore; gerekiyor nugetten indirdik-buradan inherit edilmeli
     {
         //webconfig yerine db bağlantı ayarları
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -16,5 +16,6 @@ namespace ProjeCore.Models
         }
         public DbSet<Birim> Birims { get; set; } //BÜYÜK VE COĞUL ÖNERİLEN
         public DbSet<Personel> Personels { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication.Cookies; //login için
 
 namespace ProjeCore
 {
@@ -24,13 +25,23 @@ namespace ProjeCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             //razor-views-not-refreshing-after-changes-to-cshtml-net-core-3-1 but first install ..razor.runtimecompilation
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            //AddAuthentication iþlemleri için
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(x =>
+                {
+                    x.LoginPath = "/Login/Index"; //kimlik doðrulama olamayaný buraya yönlendir
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseAuthentication(); //authentication iþlemleri için eklendi
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
