@@ -17,7 +17,7 @@
     @Html.TextBoxFor(x => x.Sehir, new { @class = "form-control" }) @*x.Sehir->name gibi çalışır*@
     <br />
     <b>Personnel Unit</b>
-    @Html.DropDownListFor(x => x.Birim.BirimID, (List<SelectListItem>)ViewBag.unitList, new { @class = "form-control" }) @*x.Birim->name gibi çalışır*@
+    @Html.DropDownListFor(x => x.BirimID, (List<SelectListItem>)ViewBag.unitList, new { @class = "form-control" }) @*x.Birim->name gibi çalışır*@
     <br />
     <button class="btn btn-info">Add Personnel</button>
 </form>

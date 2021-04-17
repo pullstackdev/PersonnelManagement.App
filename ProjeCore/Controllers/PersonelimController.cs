@@ -35,9 +35,9 @@ namespace ProjeCore.Controllers
         [HttpPost]
         public IActionResult AddPersonnel(Personel personel)
         {
-            //ilişkili tabloyuda ekleyebilmek için yapıldı
-            var unit = context.Birims.Where(x => x.BirimID == personel.Birim.BirimID).FirstOrDefault();
-            personel.Birim = unit;//aynı modeller
+            //ilişkili tabloyuda ekleyebilmek için yapıldı, ama htmlde dropdowna x.biri.birimid yerine x.birimid yazılsa ide buraya gerek yoktu
+            //var unit = context.Birims.Where(x => x.BirimID == personel.Birim.BirimID).FirstOrDefault();
+            //personel.Birim = unit;//aynı modeller
 
             context.Personels.Add(personel);
             context.SaveChanges();
